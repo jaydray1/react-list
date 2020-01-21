@@ -42,7 +42,7 @@ export const GroceryList = props => {
                   onChange={event =>
                     props.handleNewItem(event.currentTarget.value)
                   }
-                  value={props.newListItem}
+                  value={props.newListItem.value}
                   style={{
                     borderRadius: "3px",
                     height: "25px",
@@ -72,7 +72,7 @@ export const GroceryList = props => {
             {props.listArr &&
               props.listArr.map((el, idx) => (
                 <ListItem key={idx}>
-                  {el}
+                  {el.value}
                   <div style={{ justifyContent: "space-around" }}>
                     <button
                       onClick={() => props.deleteItem(idx)}

@@ -4,14 +4,17 @@ import "./styles.css";
 
 const App = () => {
   const [localArray, setLocalArray] = React.useState([]);
-  const [newListItem, setNewListItem] = React.useState("");
+  const [newListItem, setNewListItem] = React.useState({
+    value: "",
+    strike: false
+  });
 
   React.useState(() => {
     localStorage.setItem("localArray", JSON.stringify(localArray));
   });
 
-  const handleNewItem = (value: string) => {
-    setNewListItem(value);
+  const handleNewItem = (value: string, strike: boolean) => {
+    setNewListItem({ value, strike });
   };
 
   const addItem = event => {
@@ -22,7 +25,7 @@ const App = () => {
       "localArray",
       JSON.stringify([...localArray, newListItem])
     );
-    setNewListItem("");
+    setNewListItem({ value: "", strike: false });
   };
 
   const deleteItem = (index: number) => {
