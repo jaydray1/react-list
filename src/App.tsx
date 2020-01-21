@@ -29,6 +29,7 @@ const App = () => {
     const arrayFromLocal = JSON.parse(localStorage.getItem("localArray"));
     arrayFromLocal.splice(index, 1);
     setLocalArray(arrayFromLocal);
+    console.log(arrayFromLocal);
     localStorage.setItem("localArray", JSON.stringify(arrayFromLocal));
   };
 
@@ -38,6 +39,7 @@ const App = () => {
       if (i === idx) {
         el.checked = !el.checked;
       }
+      return arrayFromLocal;
     });
     setLocalArray(arrayFromLocal);
     localStorage.setItem("localArray", JSON.stringify(arrayFromLocal));

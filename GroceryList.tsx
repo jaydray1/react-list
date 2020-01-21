@@ -81,7 +81,7 @@ export const GroceryList = props => {
                   <ListItem>
                     <Checky
                       type="checkbox"
-                      value="true"
+                      checked={el.checked}
                       onChange={() => props.handleCheck(idx)}
                     />
                     <span
