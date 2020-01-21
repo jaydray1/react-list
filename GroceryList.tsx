@@ -22,6 +22,12 @@ const ListItem = styled.li`
   list-style-type: none;
 `;
 
+const Checky = styled.input`
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+`;
+
 export const GroceryList = props => {
   return (
     <>
@@ -71,23 +77,36 @@ export const GroceryList = props => {
           <ul>
             {props.listArr &&
               props.listArr.map((el, idx) => (
-                <ListItem key={idx}>
-                  {el.value}
-                  <div style={{ justifyContent: "space-around" }}>
-                    <button
-                      onClick={() => props.deleteItem(idx)}
+                <React.Fragment key={idx}>
+                  <ListItem>
+                    <Checky
+                      type="checkbox"
+                      value="true"
+                      onChange={() => props.handleCheck(idx)}
+                    />
+                    <span
                       style={{
-                        width: "10em",
-                        height: "3em",
-                        borderRadius: "5px",
-                        backgroundColor: "red",
-                        color: "white"
+                        textDecoration: el.checked ? "line-through" : null
                       }}
                     >
-                      Delete Item
-                    </button>
-                  </div>
-                </ListItem>
+                      {el.value}
+                    </span>
+                    <div style={{ justifyContent: "space-around" }}>
+                      <button
+                        onClick={() => props.deleteItem(idx)}
+                        style={{
+                          width: "10em",
+                          height: "3em",
+                          borderRadius: "5px",
+                          backgroundColor: "red",
+                          color: "white"
+                        }}
+                      >
+                        Delete Item
+                      </button>
+                    </div>
+                  </ListItem>
+                </React.Fragment>
               ))}
           </ul>
         </div>
